@@ -1,14 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class control : MonoBehaviour {
+public Text returnResponsText;
+public Text inputText;
 
 
-	public void checkbalance(string str)
+private const string Endpoints = "http://35.231.191.140/nxt?requestType=getAccount&account=";
+
+
+
+
+	public void checkBalance()
 	{
-		Debug.Log ("Your wallet adress is " + str);
-       
+		 
+
+
+	WWW request = new WWW(Endpoints+inputText.text);
+	StartCoroutine(OnResponse(request));
 	}
+
+
+
+private IEnumerator OnResponse(WWW req)
+{
+ yield return req;
+
+
+
+returnResponsText.text = req.text;
+
+
+}
+
+
+
+
 
 }
