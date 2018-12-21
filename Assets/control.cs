@@ -34,9 +34,13 @@ private IEnumerator OnResponse(WWW req)
 {
         yield return req;
         data = JsonUtility.FromJson<BlockchainData>(req.text);
-        if (data.name != null)
+         
+        if (data != null)
         {
-            DisplayText.text = "ACCOUNT: " + data.name;
+            DisplayText.text = data.name;
+            DisplayText.text = "ACCOUNT: " + data.accountAssets[3].name;
+           
+            
             
         }
         else
