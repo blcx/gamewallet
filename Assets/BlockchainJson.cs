@@ -26,21 +26,13 @@ public class BlockchainData
     public string description;
     public string quantityQNT;
 
-    public accountassets[] accountAssets;
+   
 
    
 }
 
-[System.Serializable]
-public class accountassets
-{
-public string quantityQNT;
-   public string unconfirmedQuantityQNT;
-   public string decimals;
-  public string name;
-   public string asset;
 
-}
+
 
 
 

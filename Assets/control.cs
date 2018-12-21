@@ -37,10 +37,11 @@ private IEnumerator OnResponse(WWW req)
          
         if (data != null)
         {
-            DisplayText.text = data.name;
-            DisplayText.text = "ACCOUNT: " + data.accountAssets[3].name;
+           // DisplayText.text = " NAME: " + data.name + "\n" + " GAS: " + data.balanceNQT ;
+          
+           DisplayText.text = data.balanceNQT;
            
-            
+             
             
         }
         else
@@ -61,3 +62,5 @@ public void checkAsset()
 
 
 }
+
+
