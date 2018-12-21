@@ -23,7 +23,27 @@ public class BlockchainData
     public string name;
     public string account;
     public int currentLeasingHeightFrom;
+    public string description;
+    public string quantityQNT;
+
+    public accountassets[] accountAssets;
+
+   
 }
+
+[System.Serializable]
+public class accountassets
+{
+public string quantityQNT;
+   public string unconfirmedQuantityQNT;
+   public string decimals;
+  public string name;
+   public string asset;
+
+}
+
+
+
 [System.Serializable]
 public class Lessorsinfo
 {

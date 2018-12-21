@@ -6,17 +6,26 @@ using UnityEngine.UI;
 public class control : MonoBehaviour {
 public Text DisplayText;
 public Text inputText;
+
+
+
+public string assetID;
 BlockchainData data;
 
-private const string Endpoints = "http://35.231.191.140/nxt?requestType=getAccount&account=";
+
+private const string EndpointsAcc = "http://35.231.191.140/nxt?requestType=getAccount&account=";
+private const string EndpointsAsset = "http://35.231.191.140/nxt?requestType=getAccountAssets&account=";
 
 
 
 
 	public void checkBalance()
     { 
-	WWW request = new WWW(Endpoints+inputText.text);
-	StartCoroutine(OnResponse(request));
+	WWW requestACC = new WWW(EndpointsAcc+inputText.text);
+    
+
+	StartCoroutine(OnResponse(requestACC));
+  
 	}
 
 
@@ -25,9 +34,26 @@ private IEnumerator OnResponse(WWW req)
 {
         yield return req;
         data = JsonUtility.FromJson<BlockchainData>(req.text);
-        if (data.balanceNQT != null)
-            DisplayText.text = data.balanceNQT;
+        if (data.name != null)
+        {
+            DisplayText.text = "ACCOUNT: " + data.name;
+            
+        }
         else
             DisplayText.text = "ERROR!";
     }
+
+public void checkAsset()
+{
+    WWW requestAsset = new WWW (EndpointsAsset+inputText.text+"&"+"asset="+assetID);
+      StartCoroutine(OnResponse(requestAsset));
+}
+
+
+
+
+
+
+
+
 }
