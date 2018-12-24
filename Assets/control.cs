@@ -11,7 +11,7 @@ public Text inputText;
 
 public string assetID;
 BlockchainData data;
-private int bal;
+private double bal;
 
 private const string EndpointsAcc = "http://35.231.191.140/nxt?requestType=getAccount&account=";
 private const string EndpointsAsset = "http://35.231.191.140/nxt?requestType=getAccountAssets&account=";
@@ -46,7 +46,9 @@ private IEnumerator OnResponse(WWW req)
         }
         else if(data.balanceNQT != null)
         {
-                DisplayText.text = data.balanceNQT;
+            bal = double.Parse(data.balanceNQT);
+            bal = bal/100000000.0;
+                DisplayText.text = bal.ToString();
 }
             else
             {
